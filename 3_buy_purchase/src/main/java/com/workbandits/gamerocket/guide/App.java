@@ -56,20 +56,38 @@ public class App {
                 }
             }
         });
-        
+
         get(new Route("/run_action") {
- 
+
             @Override
             public Object handle(Request request, Response response) {
                 ActionRequest actionRequest = new ActionRequest()
-                    .player("<use_player_id>")
-                    .parameters(request.queryMap().toMap());
+                        .player("<use_player_id>")
+                        .parameters(request.queryMap().toMap());
 
                 Result<Map<String, Object>> result = gateway.action().run("hello-world", actionRequest);
 
                 response.type("text/html");
                 if (result.isSuccess()) {
                     return "<h1>Success! Result: " + ((Map) result.getTarget().get("data")).get("hello");
+                } else {
+                    return "<h1>Error: " + result.getErrorDescription() + "</h1>";
+                }
+            }
+        });
+
+        get(new Route("/unlock_content") {
+
+            @Override
+            public Object handle(Request request, Response response) {
+                PurchaseRequest purchaseRequest = new PurchaseRequest()
+                        .player("<use_player_id>");
+
+                Result<Map<String, Object>> result = gateway.purchase().buy("unlock-content", purchaseRequest);
+
+                response.type("text/html");
+                if (result.isSuccess()) {
+                    return "<h1>Success! Result: " + ((Map) result.getTarget().get("data")).get("message");
                 } else {
                     return "<h1>Error: " + result.getErrorDescription() + "</h1>";
                 }
