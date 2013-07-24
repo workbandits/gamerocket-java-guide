@@ -13,7 +13,7 @@ import static spark.Spark.post;
 public class App {
 
     private static GameRocketGateway gateway = new GameRocketGateway(
-            Environment.DEVELOPMENT,
+            Environment.PRODUCTION,
             "use_your_apikey",
             "use_your_secretkey");
 

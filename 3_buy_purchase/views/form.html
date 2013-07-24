@@ -1,19 +1,18 @@
 <html>
-    <head>
-    </head>
+    <head></head>
     <body>
-        <h1>Customer Creation Form</h1>
+        <h1>Player Creation Form</h1>
         <div>
-            <form action="/create_customer" method="POST" id="gamerocket-customer-form">
+            <form action="/create_player" method="POST" id="gamerocket-player-form">
                 <p>
                     <label>Name</label>
                     <input name="name" type="text" />
                 </p>
                 <p>
                     <label>Locale</label>
-                    <input name="locale" type="text" size="4" />
+                    <input name="locale" type="text" size="5"/>
                 </p>
-                <input type="submit" id="submit" />
+                <input type="submit" id="submit" value="Create a Player" />
             </form>
         </div>
     </body>
