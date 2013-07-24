@@ -36,7 +36,7 @@ public class App {
             }
         });
 
-        post(new Route("/create_customer") {
+        post(new Route("/create_player") {
 
             @Override
             public Object handle(Request request, Response response) {
